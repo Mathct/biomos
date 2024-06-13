@@ -1,0 +1,978 @@
+/**
+ *------
+ * BGA framework: © Gregory Isabelli <gisabelli@boardgamearena.com> & Emmanuel Colin <ecolin@boardgamearena.com>
+ * Biomos implementation : © <Mathieu Chatrain> <mathieu.chatrain@gmail.com>
+ *
+ * This code has been produced on the BGA studio platform for use on http://boardgamearena.com.
+ * See http://en.boardgamearena.com/#!doc/Studio for more information.
+ * -----
+ *
+ * biomos.css
+ *
+ * Biomos stylesheet
+ *
+ */
+
+/*
+    This is the CSS stylesheet of your game User Interface.
+    
+    Styles defined on this file will be applied to the HTML elements you define in your
+    HTML template (biomos_biomos.tpl), and to HTML elements you create dynamically
+    (in biomos.js).
+    
+    Usually, you are using CSS to:
+    
+    1°) define the overall layout of your game
+        (ex: place the board on the top left, place player's hand beside, place the deck on the right, ...).
+
+    2°) create your CSS-sprites:
+        All images of your games should be gathered into a small number of image files. Then, using
+        background-image and background-position CSS properties, you create HTML blocks that can 
+        display these images correctly (see example below).
+    
+    3°) ... anything else:
+        It is really easy to add and remove CSS classes dynamically from your Javascript with
+        dojo.addClass and dojo.removeClass. It is also easy to check if an element has a class
+        (dojo.hasClass) or to get all elements with a specific class (dojo.query). This is why,
+        very often, using CSS classes for the logic of your user interface allow you to do complex
+        thing easily.
+        
+        
+     Note: on the production platform, this file will be compressed and comments will be removed.
+           Consequently, don't hesitate to put as many comments as necessary.
+*/
+
+
+/* Note: you must not use any @import directive */
+
+
+/********* You can start writing your CSS below this line: **********/
+
+
+/*
+    Example of CSS sprites (a black token and a white token, 20x20px each, embedded in the same "tokens.png" 40x20px image):
+
+    .white_token {
+        background-image: url('img/tokens.png');
+        background-position: 0px 0px;
+    }
+    .black_token {
+        background-image: url('img/tokens.png');
+        background-position: -20px 0px;
+    }
+    .token {
+        width: 20px;
+        height: 20px;
+        background-repeat: none;
+    }
+*/
+#pochon {
+    width: 1px;
+    height: 1px;
+    left: 100%;
+    top: 0%;
+    position: absolute;
+    
+      
+}
+
+.player_board_reserve {
+    
+    height: 40px;
+    background-color: #ebd5bd;
+    border-radius: 8px 0 0 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,.3);
+    clear: both;
+    padding: 5px 3px;
+
+
+
+}
+
+
+#global {
+    width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+      
+}
+
+.global1 {
+    height: 590px;
+
+}
+
+
+.global2 {
+    height: 970px;
+
+}
+
+.global3 {
+    height: 1400px;
+
+}
+
+.global4 {
+    height: 1826px;
+
+}
+
+
+
+
+#biome {
+    width: 167px;
+    height: 510px;
+    left: 0px;
+    top: 40px;
+    margin-left: 0px;
+    position: absolute;
+          
+}
+
+#bigbiome {
+    width: 167px;
+    height: 510px;
+    left: -167px;
+    top: 40px;
+    margin-left: 100%;
+    position: absolute;
+          
+}
+
+.biomecard {
+    width: 120px;
+    height: 167px;
+    left: -130px;
+    top: 171.5px;
+    position: absolute;
+    background-image: url('img/biomecard.jpg');
+    background-position-y: -167px;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.7));
+    -webkit-filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.7));
+    border-radius: 8px;
+    
+    
+    
+}
+
+.bigbiomecard {
+    width: 120px;
+    height: 167px;
+    left: 10px;
+    top: 171.5px;
+    margin-left: 100%;
+    position: absolute;
+    background-image: url('img/biomecard.jpg');
+    background-position-y: 0px;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.7));
+    -webkit-filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.7));
+    border-radius: 8px;
+    
+    
+    
+}
+
+#terrainonboard {
+    width: 345px;
+    height: 95px;
+    left: 0px;
+    top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative; 
+    
+          
+}
+
+#playersboard {
+    width: 567px;
+    height: 397px;
+    top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+      
+}
+
+#select {
+    width: 567px;
+    height: auto;
+    top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+      
+}
+
+.boardselectable {
+
+    border-radius: 4%;
+    animation: boardselectable 2s linear infinite;
+    cursor: pointer;
+    pointer-events: auto ;
+}
+
+@keyframes boardselectable {
+    0% {
+        filter: brightness(50%);
+    }
+    50% {
+        filter: brightness(100%);
+    }
+    100% {
+        filter: brightness(50%);
+    }
+  }
+
+
+#miniboard_1 {
+    width: 273px;
+    height: 191px;
+    top:0px;
+    padding: 0px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url('img/boardselect.png');
+    background-position-x: 0px;
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+    border-radius: 4px;
+    
+    
+  
+}
+
+#miniboard_2 {
+    width: 273px;
+    height: 191px;
+    top:0px;
+    padding: 0px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url('img/boardselect.png');
+    background-position-x: -273px;
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+    border-radius: 4px;
+    
+    
+  
+}
+
+#miniboard_3 {
+    width: 273px;
+    height: 191px;
+    top:0px;
+    padding: 0px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url('img/boardselect.png');
+    background-position-x: -546px;
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+    border-radius: 4px;
+    
+    
+  
+}
+
+#miniboard_4 {
+    width: 273px;
+    height: 191px;
+    top:0px;
+    padding: 0px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url('img/boardselect.png');
+    background-position-x: -819px;
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+    border-radius: 4px;
+    
+    
+  
+}
+
+.boardselect {
+    width: 273px;
+    height: 191px;
+    border-radius: 30px;
+    position: absolute;
+             
+}
+
+.playerposition_1 {
+
+    padding: 4px 2px 6px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    border-radius: 8px 8px 0 0;
+    background-color: hsla(0, 0%, 100%, 0.4);
+    margin-bottom: -4px;
+
+      
+}
+
+.playerposition_2 {
+    
+    padding: 4px 2px 6px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    border-radius: 8px 8px 0 0;
+    background-color: hsla(0, 0%, 100%, 0.4);
+    margin-bottom: -4px;
+      
+}
+
+.playerposition_3 {
+    
+    padding: 4px 2px 6px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    border-radius: 8px 8px 0 0;
+    background-color: hsla(0, 0%, 100%, 0.4);
+    margin-bottom: -4px;
+      
+}
+
+.playerposition_4 {
+    
+    padding: 4px 2px 6px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    border-radius: 8px 8px 0 0;
+    background-color: hsla(0, 0%, 100%, 0.4);
+    margin-bottom: -4px;
+      
+}
+
+.playerpositionavance_1 {
+
+    width: 120px;
+    top: 35px;
+    left: 35px;
+    padding: 0px;
+    margin-right: auto;
+    position: relative;
+    z-index: 1000;
+      
+}
+
+.playerpositionavance_2 {
+    
+    width: 120px;
+    top: 35px;
+    left: 35px;
+    padding: 0px;
+    margin-right: auto;
+    position: relative;
+    z-index: 1000;
+      
+}
+
+.playerpositionavance_3 {
+    
+    width: 120px;
+    top: 35px;
+    left: 35px;
+    padding: 0px;
+    margin-right: auto;
+    position: relative;
+    z-index: 1000;
+      
+}
+
+.playerpositionavance_4 {
+    
+    width: 120px;
+    top: 35px;
+    left: 35px;
+    padding: 0px;
+    margin-right: auto;
+    position: relative;
+    z-index: 1000;
+      
+}
+
+/*.positionactive {
+
+    animation: positionactive 1.5s linear infinite;
+    
+}
+
+@keyframes positionactive {
+    0% {
+        filter: brightness(50%);
+    }
+    50% {
+        filter: brightness(150%);
+    }
+    100% {
+        filter: brightness(50%);
+    }
+  }*/
+
+#playerfleche {
+    width: 567px;
+    height: 20px;
+    top: 30px;
+    padding: 0px;
+    position: absolute;
+    
+          
+}
+
+
+.playerboard {
+    width: 567px;
+    height: 397px;
+    top:0px;
+    padding: 0px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url('img/boardnormal.png');
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    
+  
+}
+
+.playerboardavance {
+    width: 567px;
+    height: 397px;
+    top:0px;
+    padding: 0px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    
+}
+
+.board1 {
+    background-image: url('img/boardavance.png');
+    background-position-x: 0px;
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+}
+
+.board2 {
+    background-image: url('img/boardavance.png');
+    background-position-x: -567px;
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+}
+
+.board3 {
+    background-image: url('img/boardavance.png');
+    background-position-x: -1134px;
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+}
+
+.board4 {
+    background-image: url('img/boardavance.png');
+    background-position-x: -1701px;
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+}
+
+
+
+.terrain {
+    width: 55px;
+    height: 55px;
+    border-radius: 30px;
+    position: absolute;
+             
+}
+
+.token {
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    background-image: url('img/terrain.png');
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.7));
+    -webkit-filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.7));
+    z-index: 100;
+       
+}
+.tokentype_1 {background-position-x: 0px;}
+.tokentype_2 {background-position-x: -55px;}
+.tokentype_3 {background-position-x: -110px;}
+.tokentype_4 {background-position-x: -165px;}
+.tokentype_5 {background-position-x: -220px;}
+
+.biome {
+    width: 167px;
+    height: 120px;
+    position: absolute;
+    background-image: url('img/biomes.jpg');
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.7));
+    -webkit-filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.7));
+    border-radius: 8px;
+    background-size: 1500% 200%;
+    
+}
+
+.bigbiome {
+    width: 167px;
+    height: 120px;
+    position: absolute;
+    background-image: url('img/bigbiomes.jpg');
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.7));
+    -webkit-filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.7));
+    border-radius: 8px;
+    background-size: 1000% 100%;
+    
+}
+
+.type_icon1{
+    width: 20px;
+    height: 20px;
+    background-image: url('img/terrain_icon.png');
+    background-position-x: 0px;
+    display: inline-block;
+    margin-left: 2px;
+    margin-right: 2px;
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+
+}
+
+.type_icon2{
+    width: 20px;
+    height: 20px;
+    background-image: url('img/terrain_icon.png');
+    background-position-x: -20px;
+    display: inline-block;
+    margin-left: 2px;
+    margin-right: 2px;
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+
+}
+
+.type_icon3{
+    width: 20px;
+    height: 20px;
+    background-image: url('img/terrain_icon.png');
+    background-position-x: -40px;
+    display: inline-block;
+    margin-left: 2px;
+    margin-right: 2px;
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+
+}
+
+.type_icon4{
+    width: 20px;
+    height: 20px;
+    background-image: url('img/terrain_icon.png');
+    background-position-x: -60px;
+    display: inline-block;
+    margin-left: 2px;
+    margin-right: 2px;
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+
+}
+
+.type_icon5{
+    width: 20px;
+    height: 20px;
+    background-image: url('img/terrain_icon.png');
+    background-position-x: -80px;
+    display: inline-block;
+    margin-left: 2px;
+    margin-right: 2px;
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+
+}
+
+.icon_moon{
+    width: 20px;
+    height: 20px;
+    background-image: url('img/icon_moon.png');
+    display: inline-block;
+    margin-left: 0px;
+    margin-right: 0px;
+    /*filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);*/
+
+}
+
+.icon_nomoon{
+    width: 20px;
+    height: 20px;
+    background-image: url('img/nomoon.png');
+    display: inline-block;
+    margin-left: 2px;
+    margin-right: 2px;
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+
+}
+
+.event1{
+    width: 85px;
+    height: 50px;
+    background-image: url('img/event1.png');
+    background-position-x: 0px;
+    display: inline-block;
+    margin-left: 2px;
+    margin-right: 2px;
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+
+}
+
+.event2{
+    width: 85px;
+    height: 50px;
+    background-image: url('img/event2.png');
+    background-position-x: 0px;
+    display: inline-block;
+    margin-left: 2px;
+    margin-right: 2px;
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+
+}
+
+.event3{
+    width: 85px;
+    height: 50px;
+    background-image: url('img/event3.png');
+    background-position-x: 0px;
+    display: inline-block;
+    margin-left: 2px;
+    margin-right: 2px;
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+
+}
+
+.event4{
+    width: 85px;
+    height: 50px;
+    background-image: url('img/event4.png');
+    background-position-x: 0px;
+    display: inline-block;
+    margin-left: 2px;
+    margin-right: 2px;
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+
+}
+
+
+
+
+.fleched  {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-image: url('img/fleched.png');
+    background-size: contain;
+    cursor: pointer;
+    pointer-events: auto ;
+    z-index: 100;
+    
+
+}
+
+.flecheg  {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-image: url('img/flecheg.png');
+    background-size: contain;
+    cursor: pointer;
+    pointer-events: auto ;
+    z-index: 100;
+    
+
+}
+
+
+.masque {
+
+    display: none;
+}
+
+
+
+.biomeonboard {
+    width: 167px;
+    height: 120px;
+    position: absolute;
+    
+          
+}
+
+.bigbiomeonboard {
+    width: 167px;
+    height: 120px;
+    position: absolute;
+    
+
+}
+
+.terrainonboard {
+    width: 55px;
+    height: 55px;
+    border-radius: 30px;
+    position: absolute;
+    
+    
+}
+
+
+.selectable {
+    
+    border-radius: 50%;
+    outline: 3px solid;
+    animation: selectable 2s linear infinite;
+    cursor: pointer;
+    pointer-events: auto ;
+}
+
+.selectable3 {
+    
+    border-radius: 50%;
+    outline: 3px solid;
+    animation: selectable 2s linear infinite;
+    cursor: pointer;
+    pointer-events: auto ;
+}
+
+@keyframes selectable {
+    0% {
+        outline-color: rgba(255, 0, 0, 0);
+    }
+    50% {
+        outline-color: rgba(255, 0, 0, 1);
+    }
+    100% {
+        outline-color: rgba(255, 0, 0, 0);
+    }
+  }
+
+.selectable.terrain {
+    
+    border-radius: 50%;
+    outline: none !important;
+    animation: terrain 2s linear infinite !important;
+    cursor: pointer;
+    pointer-events: auto ;
+}
+
+@keyframes terrain {
+    0% {
+      background-color: rgba(255, 255, 255, 0.3); 
+    }
+    50% {
+      background-color: rgba(255, 255, 255, 0.6); 
+    }
+    100% {
+      background-color: rgba(255, 255, 255, 0.3); 
+    }
+  }
+
+   .selectable3.terrain {
+    
+    border-radius: 50%;
+    outline: none !important;
+    animation: terrain 2s linear infinite !important;
+    cursor: pointer;
+    pointer-events: auto ;
+}
+
+
+  .selectable2 {
+    
+    border-radius: 50%;
+    animation: selectable2 1.5s linear infinite;
+    cursor: pointer;
+    pointer-events: auto ;
+}
+
+.selectable4 {
+    
+    border-radius: 50%;
+    animation: selectable2 1.5s linear infinite;
+    cursor: pointer;
+    pointer-events: auto ;
+}
+
+@keyframes selectable2 {
+    0% {
+        filter: brightness(50%);
+    }
+    50% {
+        filter: brightness(100%);
+    }
+    100% {
+        filter: brightness(50%);
+    }
+  }
+
+
+
+.selected {
+    
+    border-radius: 50%; 
+    outline: 3px solid #ff0000; 
+    pointer-events: auto ;
+    z-index: 100;
+}
+
+
+.biomeselectable {
+        
+    
+    animation: biome 1.5s linear infinite !important;
+    cursor: pointer;
+    pointer-events: auto ;
+}
+
+
+
+@keyframes biome {
+    0% {
+        
+        filter: brightness(50%);
+    }
+    50% {
+        
+        filter: brightness(100%);
+    }
+    100% {
+        
+        filter: brightness(50%);
+    }
+  }
+
+.anatooltip
+{
+ 	display: flex;
+  	align-items: center;
+	justify-content:center;	
+	flex-direction: column;
+	gap: 10px;
+}
+.anatcard {
+    
+    width: 250px;
+    height: 209px;	
+    
+}
+
+.anatboard {
+    
+    width: 400px;
+    height: 280px;	
+    
+}
+
+.biometool {
+    width: 250px;
+    height: 179px;
+    position: relative;
+    background-image: url('img/biomestool.jpg');
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+    border-radius: 8px;
+}
+
+.bigbiometool {
+    width: 250px;
+    height: 179px;
+    position: relative;
+    background-image: url('img/bigbiomestool.jpg');
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+    border-radius: 8px;
+    
+}
+
+.boardtool {
+    width: 400px;
+    height: 280px;
+    position: relative;
+    background-image: url('img/boardtool.png');
+    filter: drop-shadow(1px 1px 2px black);
+    -webkit-filter: drop-shadow(1px 1px 2px black);
+    border-radius: 8px;
+}
+
+
+.player_score_token {
+    margin: 10px 2px;
+    display: flex;
+    background: rgba(255,255,255,0.5);
+    align-items: center;
+    border-radius: 20px;
+    padding-right: 5px;
+    text-align: center;
+}
+
+.player_score_token2 {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.player_score_token3 {
+    
+    margin: 0px 5px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 8px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    padding-right: 5px;
+    
+}
+
+.player_points {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    
+}
+
+.biome_card_score {
+    margin: 0;
+    height: 53px;
+    width: 74px;
+    background-image: url('img/biomecardscore.jpg');
+    border-radius: 4px;
+    box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
+}
+
+.player_biome_nb {
+    font-size: 20px;
+    font-style: italic;
+    color: rgb(87, 82, 82);
+    
+}

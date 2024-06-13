@@ -1,0 +1,160 @@
+<?php
+/**
+ *------
+ * BGA framework: © Gregory Isabelli <gisabelli@boardgamearena.com> & Emmanuel Colin <ecolin@boardgamearena.com>
+ * Biomos implementation : © <Mathieu Chatrain> <mathieu.chatrain@gmail.com>
+ *
+ * This code has been produced on the BGA studio platform for use on http://boardgamearena.com.
+ * See http://en.boardgamearena.com/#!doc/Studio for more information.
+ * -----
+ *
+ * biomos.view.php
+ *
+ * This is your "view" file.
+ *
+ * The method "build_page" below is called each time the game interface is displayed to a player, ie:
+ * _ when the game starts
+ * _ when a player refreshes the game page (F5)
+ *
+ * "build_page" method allows you to dynamically modify the HTML generated for the game interface. In
+ * particular, you can set here the values of variables elements defined in biomos_biomos.tpl (elements
+ * like {MY_VARIABLE_ELEMENT}), and insert HTML block elements (also defined in your HTML template file)
+ *
+ * Note: if the HTML of your game interface is always the same, you don't have to place anything here.
+ *
+ */
+  
+require_once( APP_BASE_PATH."view/common/game.view.php" );
+  
+class view_biomos_biomos extends game_view
+{
+    protected function getGameName()
+    {
+        // Used for translations and stuff. Please do not modify.
+        return "biomos";
+    }
+    
+  	function build_page( $viewArgs )
+  	{		
+  	    // Get players & players number
+        $players = $this->game->loadPlayersBasicInfos();
+        $players_nbr = count( $players );
+
+        /*********** Place your code below:  ************/
+
+
+        /*
+        
+        // Examples: set the value of some element defined in your tpl file like this: {MY_VARIABLE_ELEMENT}
+
+        // Display a specific number / string
+        $this->tpl['MY_VARIABLE_ELEMENT'] = $number_to_display;
+
+        // Display a string to be translated in all languages: 
+        $this->tpl['MY_VARIABLE_ELEMENT'] = self::_("A string to be translated");
+
+        // Display some HTML content of your own:
+        $this->tpl['MY_VARIABLE_ELEMENT'] = self::raw( $some_html_code );
+        
+        */
+        
+        /*
+        
+        // Example: display a specific HTML block for each player in this game.
+        // (note: the block is defined in your .tpl file like this:
+        //      <!-- BEGIN myblock --> 
+        //          ... my HTML code ...
+        //      <!-- END myblock --> 
+        
+
+        $this->page->begin_block( "biomos_biomos", "myblock" );
+        foreach( $players as $player )
+        {
+            $this->page->insert_block( "myblock", array( 
+                                                    "PLAYER_NAME" => $player['player_name'],
+                                                    "SOME_VARIABLE" => $some_value
+                                                    ...
+                                                     ) );
+        }
+        
+        */
+
+        
+        $template = self::getGameName() . "_" . self::getGameName();
+        $position = array( 2, 3, 4 );
+        $player_ordre = $this->game->getPlayerRelativePositions();
+        $game_mode = $this->game->GameMode();
+        
+        if($game_mode == 1)
+        {
+        $this->page->begin_block($template, "player");
+        
+
+        $this->page->insert_block("player", array (
+            "PLAYER_ID" => $player_ordre[0],
+            "PLAYER_NAME" => $players [$player_ordre[0]] ['player_name'],
+            //"PLAYER_COLOR" => $players [$player_ordre[0]] ['player_color'],
+            "POS" => 1 ));
+        
+            
+        
+        
+        for( $i=1; $i<$players_nbr; $i++) 
+        {
+            
+            $pos = array_shift($position);
+            $this->page->insert_block("player", array (
+            "PLAYER_ID" => $player_ordre[$i],
+            "PLAYER_NAME" => $players [$player_ordre[$i]] ['player_name'],
+            //"PLAYER_COLOR" => $players [$player_ordre[$i]] ['player_color'],
+            "POS" => $pos ));
+            
+            
+        }
+
+        $this->page->begin_block($template, "playeravance");
+        $this->page->insert_template("playeravance", '', array ());
+    
+        }
+
+        if($game_mode == 2)
+        {
+        $this->page->begin_block($template, "playeravance");
+        
+
+        $this->page->insert_block("playeravance", array (
+            "PLAYER_ID" => $player_ordre[0],
+            "PLAYER_NAME" => $players [$player_ordre[0]] ['player_name'],
+            //"PLAYER_COLOR" => $players [$player_ordre[0]] ['player_color'],
+            "POS" => 1 ));
+        
+            
+        
+        
+        for( $i=1; $i<$players_nbr; $i++) 
+        {
+            
+            $pos = array_shift($position);
+            $this->page->insert_block("playeravance", array (
+            "PLAYER_ID" => $player_ordre[$i],
+            "PLAYER_NAME" => $players [$player_ordre[$i]] ['player_name'],
+            //"PLAYER_COLOR" => $players [$player_ordre[$i]] ['player_color'],
+            "POS" => $pos ));
+            
+            
+        }
+
+        $this->page->begin_block($template, "player");
+        $this->page->insert_template("player", '', array ());
+
+        }
+
+        
+
+        
+        
+       
+
+        /*********** Do not change anything below this line  ************/
+  	}
+}
