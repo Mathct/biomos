@@ -1091,12 +1091,16 @@ function (dojo, declare) {
 
 
             addTerrainOnPlayer: function( id, type, location, position )  
+                
                 {
+                    if(position!=0)
+                    {
                     dojo.place( this.format_block( 'jstpl_token', {
                         id: id,
                         type: type,
                                            
                     } ) , location+'_'+position );
+                }
                     
                 },
 
